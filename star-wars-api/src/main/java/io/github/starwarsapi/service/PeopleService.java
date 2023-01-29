@@ -1,4 +1,4 @@
-package io.github.starwarsapi;
+package io.github.starwarsapi.service;
 
 import io.github.starwarsapi.entity.Film;
 import io.github.starwarsapi.entity.People;

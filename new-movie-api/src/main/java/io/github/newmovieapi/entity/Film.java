@@ -17,7 +17,6 @@ public class Film {
     private String director;
     private int episode_id;
     private String release_date;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<String> characters;
 
     @Override

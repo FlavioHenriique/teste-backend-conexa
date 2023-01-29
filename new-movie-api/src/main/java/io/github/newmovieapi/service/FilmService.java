@@ -1,9 +1,11 @@
 package io.github.newmovieapi.service;
 
 import io.github.newmovieapi.entity.Film;
+import io.github.newmovieapi.entity.StarWarsApiResponse;
 import io.github.newmovieapi.feign.StarWarsAPIClient;
 import io.github.newmovieapi.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -19,10 +21,15 @@ public class FilmService {
 
     public List<Film> getLukeSkywalkerFilms() {
 
-        List<Film> lukeSkywalkerFilms = client.getLukeSkywalkerFilms();
-        lukeSkywalkerFilms.add(newLukeSkywalkerFilm(lukeSkywalkerFilms.get(0)));
-        lukeSkywalkerFilms.forEach(System.out::println);
-        return lukeSkywalkerFilms;
+        StarWarsApiResponse response = client.getLukeSkywalkerFilms();
+        if (response.getStatus() == HttpStatus.OK.value()){
+            List<Film> lukeSkywalkerFilms = response.getResult();
+            lukeSkywalkerFilms.add(newLukeSkywalkerFilm(lukeSkywalkerFilms.get(0)));
+            System.out.println("======== Printing all films =========");
+            lukeSkywalkerFilms.forEach(System.out::println);
+            return lukeSkywalkerFilms;
+        }
+        return null;
     }
 
     private Film newLukeSkywalkerFilm(Film example){

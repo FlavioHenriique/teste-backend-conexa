@@ -1,6 +1,7 @@
 package io.github.newmovieapi.feign;
 
 import io.github.newmovieapi.entity.Film;
+import io.github.newmovieapi.entity.StarWarsApiResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,5 +12,5 @@ import java.util.List;
 public interface StarWarsAPIClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/film/lukeSkywalkerFilms")
-    public List<Film> getLukeSkywalkerFilms();
+    public StarWarsApiResponse getLukeSkywalkerFilms();
 }

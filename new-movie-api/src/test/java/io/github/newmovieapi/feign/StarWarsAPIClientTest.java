@@ -12,14 +12,14 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class StarWarsAPIClientTest {
+class StarWarsAPIClientTest {
 
     @Autowired
     private StarWarsAPIClient client;
 
     @Test
-    public void shouldStarWarsAPIClientReturnValue(){
-        List<Film> lukeSkywalkerFilms = client.getLukeSkywalkerFilms();
+    void shouldStarWarsAPIClientReturnValue(){
+        List<Film> lukeSkywalkerFilms = client.getLukeSkywalkerFilms().getResult();
         Assert.isTrue(lukeSkywalkerFilms.size() > 0, "");
     }
 }
