@@ -20,9 +20,10 @@ public class FilmService {
         SwapiResult<Film> films = swapiClient.getFilms();
         for (int i = 0; i < films.getResults().size(); i ++){
             Film film = films.getResults().get(i);
-            if (title.equals(film.getTitle()))
+            if (title.equals(film.getTitle())){
                 convertDate(film);
                 return film;
+            }
         }
         throw new FilmNotFoundException("Film not found");
     }
