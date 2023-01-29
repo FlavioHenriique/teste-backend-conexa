@@ -6,17 +6,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
 public class Film {
 
     private String title;
     private String director;
+    @Id
     private int episode_id;
     private String release_date;
+    @ElementCollection
     private List<String> characters;
 
     @Override
