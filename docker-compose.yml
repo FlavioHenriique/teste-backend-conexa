@@ -1,0 +1,18 @@
+version: '2'
+services:
+  new-movie-api:
+    image: conexa/new-movie-api
+    build: ./new-movie-api
+    ports:
+      - 8081:8081
+      - 9092:9092
+    links:
+      - "star-wars-api:host-star-wars-api"
+    depends_on:
+      - star-wars-api
+
+  star-wars-api:
+    image: conexa/star-wars-api
+    build: ./star-wars-api
+    ports:
+      - 8082:8082
